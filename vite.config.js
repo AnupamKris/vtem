@@ -3,7 +3,6 @@ import vue from "@vitejs/plugin-vue";
 import Components from "unplugin-vue-components/vite";
 import AutoImport from "unplugin-auto-import/vite";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue({
@@ -13,6 +12,7 @@ export default defineConfig({
         },
       },
     }),
+
     AutoImport({
       dirs: [],
       imports: ["vue"],
@@ -21,4 +21,9 @@ export default defineConfig({
       dirs: ["src/components"],
     }),
   ],
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
 });
